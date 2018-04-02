@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'iCentennial';
+  private _opened: boolean = true;
+
+  private _toggleSidebar() {
+    this._opened = !this._opened;
+  }
+
 }

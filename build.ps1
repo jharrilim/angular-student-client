@@ -1,0 +1,1 @@
+ng lint; if($?) { ng test }; if($?) { ng e2e }; if($?) { ng build --prod };

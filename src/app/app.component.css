@@ -1,0 +1,26 @@
+ng-sidebar {
+    background: red;
+    width: 13rem;
+}
+
+ng-sidebar-container {
+    background: #DDDDFF;
+}
+
+
+#sideNavPullout {
+    background-color:#444444;
+}
+
+#sideNavPullout li {
+    padding: 1vh;
+    color: #eeeeee;
+}
+
+ng-sidebar__backdrop {
+    background-color:violet;
+}
+
+.contentClass {
+    background-color:red;
+}
