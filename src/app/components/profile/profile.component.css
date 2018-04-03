@@ -1,0 +1,14 @@
+.rightAlign{text-align: right;
+    border-right: 1px solid black;
+}
+table {
+    border: 1px solid black;
+    padding-top: 100px;
+}
+#design{
+    position: relative;
+    padding-right: 200px;
+    padding-left: 200px;
+    padding-top: 50px;
+
+}
