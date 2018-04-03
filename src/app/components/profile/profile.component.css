@@ -1,14 +1,21 @@
 .rightAlign{text-align: right;
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+.leftValues{
+    border-bottom:1px solid black;
+    background-color: white;
 }
 table {
-    border: 1px solid black;
+    border: 1px hidden black;
     padding-top: 100px;
+    
 }
 #design{
-    position: relative;
-    padding-right: 200px;
-    padding-left: 200px;
+    position: center;
+    
     padding-top: 50px;
 
 }
