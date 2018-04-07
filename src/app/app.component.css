@@ -1,4 +1,6 @@
 .body {
+    margin-left: auto;
+    margin-right: auto;
     background: #DDDDFF;
 }
 ng-sidebar {
@@ -10,7 +12,7 @@ ng-sidebar {
     background: black;
 }
 
-#sideNavPullout { 
+#sideNavPullout {
     background-color: #343a40;
 }
 

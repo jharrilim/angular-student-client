@@ -1,0 +1,42 @@
+<!-- Add Course  -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <form #courseForm="ngForm">
+    <div class="modal-header">
+      <h4 class="modal-title">Create Course</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="courseCode">Course Code</label>
+          <input type="text" class="form-control" id="courseCode" name="courseCode" [(ngModel)]="courseCode" placeholder="Course Code" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8">
+          <label for="courseName">Course Name</label>
+          <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="name" placeholder="Course Name" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="section">Section</label>
+          <input type="text" class="form-control" id="section" name="section"  [(ngModel)]="section" placeholder="001" />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="semester">Semester</label>
+          <input type="text" class="form-control" id="semester" name="semester" [(ngModel)]="semester" placeholder="1" />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+      <button type="button" class="btn btn-lg btn-outline-success" (click)="onCourseCreate(courseForm)">
+        <i class="fa fa-plus-circle"> Add New Course</i>
+      </button>
+    </div>
+  </form>
+</ng-template>

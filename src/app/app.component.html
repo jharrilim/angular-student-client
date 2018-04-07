@@ -6,13 +6,13 @@
 </nav>
 <div class="body">
   <ng-sidebar-container style="height: 100vh;">
-    <ng-sidebar 
+    <ng-sidebar
       (onOpenStart)="onOpenStart()"
       (onCloseStart)="onOpenStart()"
-      [(opened)]="_opened" 
-      position="left" 
-      closeOnClickOutside="true" 
-      mode="push">
+      [(opened)]="_opened"
+      position="left"
+      closeOnClickOutside="true"
+      mode="">
 
       <ul #drawer id="sideNavPullout" class="navbar-nav mr-auto">
         <li class="nav-item">

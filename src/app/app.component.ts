@@ -13,16 +13,14 @@ export class AppComponent implements AfterViewInit {
 
   private _toggleSidebar() {
     this._opened = !this._opened;
+
   }
 
   onOpenStart() {
-    console.log(this.content.nativeElement.style);
   }
 
   ngAfterViewInit() {
     this.drawer.nativeElement.style.top = this.toggle.nativeElement.offsetHeight;
-    this.content.nativeElement.style.left = this.drawer.nativeElement.offsetWidth;
-    this.content.nativeElement.style.position = 'fixed';
-    console.log(this.drawer.nativeElement.offsetWidth);
+    this.content.nativeElement.style.marginLeft = this.drawer.nativeElement.offsetWidth;
   }
 }
