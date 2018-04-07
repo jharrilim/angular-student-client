@@ -16,17 +16,25 @@ export class CoursesComponent {
 
   createCourse(course: Course) {
     console.log(course);
-    this.courseService.create(course).subscribe(course => {
-      console.log(course);
-    }, e => console.log(e ? e : "")
-    );
+    // this.courseService.create(course).subscribe(course => {
+    //   console.log(course);
+    // }, e => console.log(e ? e : "")
+    // );
+    this.courseService.test(course).subscribe(result => {
+      if (CourseService.isErrorObservable(result))
+        return console.log("error: " + result.error);
+      return console.log("success: " + result);
+    });
   }
 
-  loadCourses() {
-    this.courseService.all().subscribe(
-      courses => this.courses = courses,
-      err => console.log(err.message)
-    );
+  loadCourses(): void {
+    this.courseService.all().subscribe(result => {
+      if (CourseService.isErrorObservable(result)) {
+        // say bad things, i know you like bad things
+      } else { // result is Course[]
+        this.courses = result;
+      }
+    });
   }
 
 }

@@ -9,33 +9,43 @@ export abstract class Service<T> {
 
   constructor(private http: HttpClient, private name: String) { }
 
-  all(): Observable<T[]> {
-    return this.http.get<T[]>(`/api/${name}`)
+  public static isErrorObservable<T>(observable: T | ErrorObservable):
+    observable is ErrorObservable {
+    return (<ErrorObservable>observable).error !== undefined;
+  }
+
+  all(): Observable<T[] | ErrorObservable> {
+    return this.http.get<T[]>(`/api/${this.name}`)
       .pipe(catchError(this.handleError));
   }
 
-  by(id: String): Observable<T> {
-    return this.http.get<T>(`/api/${name}/${id}`)
+  by(id: String): Observable<T | ErrorObservable> {
+    return this.http.get<T>(`/api/${this.name}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
-  create(t: T): Observable<T> {
-    return this.http.post<T>(`/api/${name}`, t)
+  test(t: T): Observable<T | ErrorObservable> {
+    return this.http.post<T>(`http://localhost:3000/api/${this.name}`, t)
       .pipe(catchError(this.handleError));
   }
 
-  upsert(t: T): Observable<T> {
-    return this.http.put<T>(`/api/${name}`, t)
+  create(t: T): Observable<T | ErrorObservable> {
+    return this.http.post<T>(`/api/${this.name}`, t)
       .pipe(catchError(this.handleError));
   }
 
-  update(id: String, t: T): Observable<T> {
-    return this.http.patch<T>(`/api/${name}/${id}`, t)
+  upsert(t: T): Observable<T | ErrorObservable> {
+    return this.http.put<T>(`/api/${this.name}`, t)
       .pipe(catchError(this.handleError));
   }
 
-  delete(id: String): Observable<T> {
-    return this.http.delete<T>(`/api/${name}/${id}`)
+  update(id: String, t: T): Observable<T | ErrorObservable> {
+    return this.http.patch<T>(`/api/${this.name}/${id}`, t)
+      .pipe(catchError(this.handleError));
+  }
+
+  delete(id: String): Observable<T | ErrorObservable> {
+    return this.http.delete<T>(`/api/${this.name}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
