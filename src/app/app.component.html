@@ -3,7 +3,15 @@
     <button #toggleSidebar type="button" (click)="_toggleSidebar()" class="nav-item nav-link btn outline-success my-sm-0">
       <span [ngClass]="_opened? 'fa fa-arrow-left' : 'fa fa-bars'"></span>
     </button>
+    <a [routerLink]='["/Home"]' class="nav navbar-brand mx-auto">iCentennial</a>
+    <button
+       class="nav-item nav-link btn btn-outline-warning navbar-justified"
+       (click)="signup.open()">
+       Register
+    </button>
+    <a #loginLoginBtn href="#" class="nav-item nav-link btn btn-outline-success navbar-justified">Login</a>
 </nav>
+<app-signup #signup></app-signup>
 <div class="body">
   <ng-sidebar-container style="height: 100vh;">
     <ng-sidebar
@@ -12,7 +20,9 @@
       [(opened)]="_opened"
       position="left"
       closeOnClickOutside="true"
-      mode="">
+      mode="push"
+      class="ng-sidebar__backdrop"
+      >
 
       <ul #drawer id="sideNavPullout" class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -32,12 +42,13 @@
       </ul>
     </ng-sidebar>
     <div #sidebarContent ng-sidebar-content>
-      <!-- <button type="button" class="menu" (click)="_toggleSidebar()" class="btn btn-default btn-lg">
-                <span [ngClass]="_opened? 'fa fa-arrow-left' : 'fa fa-bars'"></span>
-              </button> -->
-      <router-outlet>
-
-      </router-outlet>
+      <router-outlet></router-outlet>
+      <div #footer class="footer">
+        <div class="innerFooter">
+          <h6>Copyright 2018. Joseph Harrison-Lim, Amanpreet Brar.</h6>
+        </div>
+      </div>
     </div>
   </ng-sidebar-container>
 </div>
+<div></div>

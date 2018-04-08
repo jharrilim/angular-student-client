@@ -1,33 +1,48 @@
 .body {
-    margin-left: auto;
-    margin-right: auto;
-    background: #DDDDFF;
+  margin-left: auto;
+  margin-right: auto;
+  background: #EEEEFF;
 }
+
 ng-sidebar {
-    background: red;
-    width: 13rem;
+  background: red;
+  width: 13rem;
 }
 
 .ng-sidebar__content {
-    background: black;
+  background: black;
 }
 
 #sideNavPullout {
-    background-color: #343a40;
+  background-color: #343a40;
+  height: 100%;
+  font-weight: 500;
+  box-shadow: 20px 30px 5px -2px #888;
 }
 
 #sideNavPullout li {
-    padding-left: 1em;
-    padding-right: 1.5em;
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
-    color: #eeeeee;
+  padding-left: 1em;
+  padding-right: 1.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  color: #eeeeee;
 }
 
-ng-sidebar__backdrop {
-    background-color:violet;
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
-.contentClass {
-    background-color:red;
+.innerFooter {
+  position: relative;
+  padding-top: 10px;
+  width: 50%;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #343a40;
+  color: #eeeeee;
 }

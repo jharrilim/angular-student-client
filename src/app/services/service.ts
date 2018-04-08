@@ -24,11 +24,6 @@ export abstract class Service<T> {
       .pipe(catchError(this.handleError));
   }
 
-  test(t: T): Observable<T | ErrorObservable> {
-    return this.http.post<T>(`http://localhost:3000/api/${this.name}`, t)
-      .pipe(catchError(this.handleError));
-  }
-
   create(t: T): Observable<T | ErrorObservable> {
     return this.http.post<T>(`/api/${this.name}`, t)
       .pipe(catchError(this.handleError));

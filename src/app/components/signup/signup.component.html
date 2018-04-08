@@ -1,3 +1,56 @@
-<p>
-  signup works!
-</p>
+<!-- Add Course  -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <form #registerForm="ngForm">
+    <div class="modal-header">
+      <h4 class="modal-title">Register Student</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="studentNumber">Student Number</label>
+          <input type="text" class="form-control" id="studentNumber" name="studentNumber" [(ngModel)]="studentNumber" placeholder="300123555" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="firstName" placeholder="John" required />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lastName" placeholder="Smith" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" name="address" [(ngModel)]="address" placeholder="560 State St" required />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" name="city" [(ngModel)]="city" placeholder="New York" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" placeholder="416123658" required />
+        </div>
+        <div class="form-group col-md-8">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="john.smith@mail.com" required />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-warning" (click)="c('Close click')">Cancel</button>
+      <button type="button" class="btn btn-lg btn-outline-success" (click)="requestRegister(registerForm)">
+        <i class="fa fa-plus-circle"> Register</i>
+      </button>
+    </div>
+  </form>
+</ng-template>

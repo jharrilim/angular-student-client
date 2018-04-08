@@ -12,4 +12,16 @@
         <td>Email</td>
       </tr>
     </thead>
+    <ng-container *ngIf="students?.length">
+      <tr *ngFor="let s of students">
+        <td>{{ s.studentNumber }}</td>
+        <td>{{ s.firstName }}</td>
+        <td>{{ s.lastName }}</td>
+        <td>{{ s.address }}</td>
+        <td>{{ s.city }}</td>
+        <td>{{ s.phoneNumber }}</td>
+        <td>{{ s.email }}</td>
+        <td><a [routerLink]="'/courses/view/'+ course.id">Show</a></td>
+      </tr>
+    </ng-container>
   </table>

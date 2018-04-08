@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CourseService } from '../../services/course.service';
 import { Course } from '../../models/course';
 
@@ -8,30 +8,34 @@ import { Course } from '../../models/course';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent {
+export class CoursesComponent implements OnInit {
 
   @Input() courses: Course[];
 
   constructor(private courseService: CourseService) { }
 
-  createCourse(course: Course) {
+  ngOnInit() {
+    this.loadCourses();
+  }
+
+  createCourse(course: Course): void {
     console.log(course);
-    // this.courseService.create(course).subscribe(course => {
-    //   console.log(course);
-    // }, e => console.log(e ? e : "")
-    // );
-    this.courseService.test(course).subscribe(result => {
-      if (CourseService.isErrorObservable(result))
-        return console.log("error: " + result.error);
-      return console.log("success: " + result);
+    this.courseService.create(course).subscribe(result => {
+      if (CourseService.isErrorObservable(result)) {
+        console.log("error: " + result.error);
+      }
+      console.log("success: ");
+      console.log(result);
+      this.loadCourses();
     });
   }
 
   loadCourses(): void {
     this.courseService.all().subscribe(result => {
       if (CourseService.isErrorObservable(result)) {
-        // say bad things, i know you like bad things
-      } else { // result is Course[]
+        // TODO: Handle err
+        return;
+      } else {
         this.courses = result;
       }
     });

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StudentService } from '../../services/student.service';
+import { Student } from '../../models/Student';
 
 @Component({
   selector: 'app-students',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
-  constructor() { }
+  @Input() students: Student[];
+
+  constructor(private studentService: StudentService) { }
 
   ngOnInit() {
+    this.loadStudents();
   }
 
+  loadStudents(): void {
+    this.studentService.all().subscribe(result => {
+      if(StudentService.isErrorObservable(result)){
+        // TODO: Handle err
+        return;
+      } else {
+        this.students = result;
+      }
+    });
+  }
 }
