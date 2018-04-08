@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { StudentService } from '../../services/student.service';
 import { Student } from '../../models/Student';
@@ -12,28 +12,35 @@ import { Student } from '../../models/Student';
 export class SignupComponent {
   closeResult: String;
   student: Student;
+  modalRef: NgbModalRef;
 
-  @Output() signupHandler: EventEmitter<Student>;
+  @Output() signupHandler: EventEmitter<boolean>;
   @ViewChild('content') content: ElementRef;
 
   constructor(private studentService: StudentService,
     private modalService: NgbModal) {
-    this.signupHandler = new EventEmitter<Student>();
+    this.signupHandler = new EventEmitter<boolean>();
     this.student = new Student();
   }
 
-  createStudent(student: Student): void {
-    this.studentService.create(student).subscribe(result => {
+  createStudent(form: NgForm): void {
+    this.student = <Student>form.value;
+    this.studentService.create(this.student).subscribe(result => {
       if (StudentService.isErrorObservable(result)) {
         console.log("error: " + result.error);
+        this.signupHandler.emit(false);
+      } else {
+        console.log("success: ");
+        console.log(result);
+        this.signupHandler.emit(true);
       }
-      console.log("success: ");
-      console.log(result);
+      this.modalRef.close();
     });
   }
 
   open() {
-    this.modalService.open(this.content).result.then((result) => {
+    this.modalRef = this.modalService.open(this.content);
+    this.modalRef.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
