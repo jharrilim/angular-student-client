@@ -3,8 +3,8 @@
     <div class="navbar-collapse collapse dual-nav w-100">
         <ul class="navbar-nav">
             <li class="nav-item">
-              <button #toggleSidebar type="button" (click)="_toggleSidebar()" class="btn btn-lg btn-outline-secondary outline-success px-4">
-                <span [ngClass]="_opened? 'fa fa-arrow-left' : 'fa fa-bars'"></span>
+              <button #toggleSidebar type="button" (click)="toggleSidebar()" class="btn btn-lg btn-outline-secondary outline-success px-4">
+                <span [ngClass]="opened? 'fa fa-arrow-left' : 'fa fa-bars'"></span>
               </button>
             </li>
         </ul>
@@ -24,7 +24,7 @@
     <ng-sidebar
       (onOpenStart)="onOpenStart()"
       (onCloseStart)="onOpenStart()"
-      [(opened)]="_opened"
+      [(opened)]="opened"
       position="left"
       closeOnClickOutside="true"
       mode="push"

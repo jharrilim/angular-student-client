@@ -6,14 +6,14 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
-  private _opened: boolean = true;
+  public opened: boolean = true;
   @ViewChild('drawer') drawer: ElementRef;
   @ViewChild('sidebarContent') content: ElementRef;
   @ViewChild('toggleSidebar') toggle: ElementRef;
   @ViewChild('footer') footer: ElementRef;
 
-  private _toggleSidebar() {
-    this._opened = !this._opened;
+  public toggleSidebar() {
+    this.opened = !this.opened;
 
   }
 
