@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular
 import { NgbModal, NgbModalRef, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { StudentService } from '../../services/student.service';
-import { Student } from '../../models/Student';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-signup',
@@ -56,5 +56,4 @@ export class SignupComponent {
       return `with: ${reason}`;
     }
   }
-
 }

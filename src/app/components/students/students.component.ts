@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StudentService } from '../../services/student.service';
-import { Student } from '../../models/Student';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-students',
@@ -19,7 +19,7 @@ export class StudentsComponent implements OnInit {
 
   loadStudents(): void {
     this.studentService.all().subscribe(result => {
-      if(StudentService.isErrorObservable(result)){
+      if (StudentService.isErrorObservable(result)) {
         // TODO: Handle err
         return;
       } else {

@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { Course } from '../../../models/course';
 
@@ -11,6 +11,7 @@ import { Course } from '../../../models/course';
 export class AddCourseModalComponent {
   closeResult: String;
   course: Course;
+  modal: NgbModalRef;
 
   @Output() courseCreate: EventEmitter<Course>;
   @ViewChild('content') content: ElementRef;
@@ -24,11 +25,13 @@ export class AddCourseModalComponent {
     console.log(f);
     this.course = <Course>f.value;
     console.log(this.course);
+    this.modal.close();
     this.courseCreate.emit(this.course);
   }
 
   open() {
-    this.modalService.open(this.content).result.then((result) => {
+    this.modal = this.modalService.open(this.content);
+    this.modal.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

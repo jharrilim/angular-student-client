@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<!-- Add Course  -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <form #loginForm="ngForm">
+    <div class="modal-header">
+      <h4 class="modal-title">Login</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="studentNumber">Student Number</label>
+          <input type="text" class="form-control" id="studentNumber" name="studentNumber" [(ngModel)]="studentNumber" placeholder="300123555" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="firstName">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-warning" (click)="c('Close click')">Cancel</button>
+      <button type="button" class="btn btn-lg btn-outline-success" (click)="loginStudent(loginForm)">
+        <i class="fa fa-plus-circle"> Login</i>
+      </button>
+    </div>
+  </form>
+</ng-template>
